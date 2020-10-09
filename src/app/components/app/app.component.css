@@ -41,7 +41,7 @@
   background-color: blueviolet;
   color: black;
   border-radius: 5px;
-  transform: scale(1);
+  transform: translateY(-0.10em);
 }
 
 .text-center {
