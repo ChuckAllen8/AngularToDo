@@ -1,0 +1,54 @@
+.container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 10px 10px 10px;
+  height: fit-content;
+}
+
+.card {
+  border-width: thin;
+  border-style: outset;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  height: fit-content;
+  margin-bottom: 5px;
+  background-color: lightgray;
+}
+
+.card:hover {
+  transform: translateY(-0.10em);
+  box-shadow: 3px 5px blueviolet ;
+}
+
+.card-text {
+  font-size: large;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.btn {
+  margin-left: 5px;
+  font-size: medium;
+}
+
+.btn.btn-right {
+  float: right;
+}
+
+.btn:hover {
+  background-color: blueviolet;
+  color: black;
+  border-radius: 5px;
+  transform: scale(1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.large-input {
+  height: 25px;
+  width: 40%;
+}

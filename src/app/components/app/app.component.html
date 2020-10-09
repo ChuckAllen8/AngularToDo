@@ -1,0 +1,21 @@
+
+<div class="container">
+  <h1 class="text-center">{{title}}</h1>
+
+  <div>
+    <div class="card" *ngIf="(todoList.length == 0 || allComplete())">
+      <h2>All tasks are completed!</h2>
+    </div>
+    <div class="card" *ngFor="let task of todoList">
+      <span class="card-text bold-text" [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}"> {{task.task}} </span>
+      <button class="btn btn-right" (click)="removeTask(task)">X</button>
+      <button class="btn btn-right" *ngIf="!task.completed" (click)="completeTask(task)">Complete</button>
+    </div>
+    
+  </div>
+  
+  <div class="card">
+    <input type="text" class="card-text large-input" #box (keyup.enter)="addTask(box.value); box.value=''" />
+    <button class="circle-link btn" (click)="addTask(box.value); box.value=''">Add</button>
+  </div>
+</div>
