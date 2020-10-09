@@ -1,8 +1,9 @@
 .container {
+  margin: 0 auto;
   background-color: white;
   border-radius: 20px;
   padding: 10px 10px 10px 10px;
-  height: fit-content;
+  max-width: 1000px;
 }
 
 .card {
