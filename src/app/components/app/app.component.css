@@ -30,8 +30,9 @@
 }
 
 .btn {
-  margin-left: 5px;
+  margin-right: 5px;
   font-size: medium;
+  height: 24px;
 }
 
 .btn.btn-right {
@@ -49,17 +50,33 @@
   text-align: center;
 }
 
-.large-input {
+.small-input {
   height: 25px;
   width: 40%;
+}
+
+.extra-small-input {
+  width: 6em;
+}
+
+.card-input {
+  width: 80%;
 }
 
 .selected-input {
   background-color: inherit;
   border: none;
-  width: 80%;
 }
 
 .selected-input:focus {
   background-color: white;
+}
+
+.text-right {
+  float: right;
+}
+
+.large-checkbox {
+  width: 24px;
+  height: 24px;
 }

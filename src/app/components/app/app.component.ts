@@ -10,6 +10,7 @@ import { DataService } from '../../services/data.service';
 export class AppComponent {
   title = 'Tasks';
   filter: string;
+  onlyIncomplete: boolean;
 
   todoList: Todo[];
   allTasks: Todo[];
@@ -41,7 +42,7 @@ export class AppComponent {
       this.todoList = [];
       for(let item of this.allTasks) {
         let reg = `.*${this.filter}.*`.toLowerCase();
-        if(item.task.toLowerCase().match(reg)) {
+        if(item.task.toLowerCase().match(reg) && (!this.onlyIncomplete || !item.completed)) {
           this.todoList.push(item);
         }
       }
@@ -54,7 +55,9 @@ export class AppComponent {
   populateTasks() {
     this.todoList = [];
     for(let item of this.allTasks) {
-      this.todoList.push(item);
+      if(!this.onlyIncomplete || !item.completed) {
+        this.todoList.push(item);
+      }
     }
   }
 
@@ -70,7 +73,8 @@ export class AppComponent {
 
   constructor(private data: DataService) {
     data.getTasks().subscribe(tasks => this.allTasks = tasks)
-    this.populateTasks();
     this.filter = "";
+    this.onlyIncomplete = false;
+    this.filterTasks();
   }
 }
