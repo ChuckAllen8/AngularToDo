@@ -3,7 +3,7 @@
     <h1 class="text-center">{{title}}</h1>
     <div>
       <div class="card">
-        <input type="text" class="card-text large-input" (input)="filterTasks()" [(ngModel)]="filter" placeholder="Filter" />
+        <input type="text" class="card-text small-input" (input)="filterTasks()" [(ngModel)]="filter" placeholder="Filter" />
         <input id="incomplete" type="checkbox" class="btn btn-right large-checkbox" (change)="filterTasks()" [(ngModel)]="onlyIncomplete"  />
         <label class="card-text text-right" for="incomplete">Incomplete</label>
       </div>
@@ -11,7 +11,7 @@
         <h2 class="text-center">All tasks are completed!</h2>
       </div>
       <div class="card" *ngFor="let task of todoList">
-        <input class="card-text bold-text selected-input" [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}" value="{{task.task}}" (change)="saveTask(task, $event.target.value)" />
+        <input class="card-text bold-text selected-input large-input" [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}" value="{{task.task}}" (change)="saveTask(task, $event.target.value)" />
         <button class="btn btn-right" (click)="removeTask(task)">X</button>
         <button class="btn btn-right" *ngIf="!task.completed" (click)="completeTask(task)">Complete</button>
       </div>

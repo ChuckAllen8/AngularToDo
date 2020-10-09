@@ -55,6 +55,10 @@
   width: 40%;
 }
 
+.large-input {
+  width: 80%;
+}
+
 .extra-small-input {
   width: 6em;
 }
