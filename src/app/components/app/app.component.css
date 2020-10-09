@@ -53,3 +53,13 @@
   height: 25px;
   width: 40%;
 }
+
+.selected-input {
+  background-color: inherit;
+  border: none;
+  width: 80%;
+}
+
+.selected-input:focus {
+  background-color: white;
+}

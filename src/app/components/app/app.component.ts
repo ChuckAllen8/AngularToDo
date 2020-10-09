@@ -9,26 +9,58 @@ import { DataService } from '../../services/data.service';
 })
 export class AppComponent {
   title = 'Tasks';
+  filter: string;
 
   todoList: Todo[];
+  allTasks: Todo[];
 
   completeTask(task: Todo): void {
     task.completed = true;
+    this.filterTasks();
   }
 
   removeTask(task: Todo): void {
     this.data.deleteTask(task);
+    this.filterTasks();
   }
 
   addTask(value: string): void {
     if(value != "") {
       this.data.addTask(value);
     }
+    this.filterTasks();
+  }
+
+  saveTask(task: Todo, update: string) {
+    task.task = update;
+    this.filterTasks();
+  }
+
+  filterTasks() {
+    if(!(this.filter === undefined || this.filter === "")) {
+      this.todoList = [];
+      for(let item of this.allTasks) {
+        let reg = `.*${this.filter}.*`.toLowerCase();
+        if(item.task.toLowerCase().match(reg)) {
+          this.todoList.push(item);
+        }
+      }
+    }
+    else if(!(this.filter === undefined)) {
+      this.populateTasks();
+    }
+  }
+
+  populateTasks() {
+    this.todoList = [];
+    for(let item of this.allTasks) {
+      this.todoList.push(item);
+    }
   }
 
   allComplete(): boolean {
     let allGood = true;
-    this.todoList.forEach(function(value) {
+    this.allTasks.forEach(function(value) {
       if(!value.completed) {
         allGood = false;
       }
@@ -37,6 +69,8 @@ export class AppComponent {
   }
 
   constructor(private data: DataService) {
-    data.getTasks().subscribe(tasks => this.todoList = tasks)
+    data.getTasks().subscribe(tasks => this.allTasks = tasks)
+    this.populateTasks();
+    this.filter = "";
   }
 }
