@@ -70,6 +70,7 @@
 .selected-input {
   background-color: inherit;
   border: none;
+  cursor: default;
 }
 
 .selected-input:focus {
