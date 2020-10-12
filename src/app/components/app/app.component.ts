@@ -38,40 +38,19 @@ export class AppComponent {
   }
 
   filterTasks() {
-    if(!(this.filter === undefined || this.filter === "")) {
-      this.todoList = [];
-      for(let item of this.allTasks) {
-        let reg = `.*${this.filter}.*`.toLowerCase();
-        if(item.task.toLowerCase().match(reg) && (!this.onlyIncomplete || !item.completed)) {
-          this.todoList.push(item);
-        }
-      }
-    }
-    else if(!(this.filter === undefined)) {
-      this.populateTasks();
+    this.populateTasks();
+    if(this.filter) {
+      let reg = `.*${this.filter}.*`.toLowerCase();
+      this.todoList = this.todoList.filter(x => x.task.toLowerCase().match(reg));
     }
   }
 
   populateTasks() {
-    this.todoList = [];
-    for(let item of this.allTasks) {
-      if(!this.onlyIncomplete || !item.completed) {
-        this.todoList.push(item);
-      }
-    }
+    this.todoList = this.allTasks.filter(x => (!this.onlyIncomplete || !x.completed));
   }
 
   allComplete(): boolean {
-    let allGood = true;
-    if(this.allTasks.length == 0) {
-      return allGood;
-    }
-    this.allTasks.forEach(function(value) {
-      if(!value.completed) {
-        allGood = false;
-      }
-    });
-    return allGood;
+    return (this.allTasks.length == 0 || this.allTasks.filter(x => x.completed).length == this.allTasks.length);
   }
 
   constructor(private data: DataService) {
