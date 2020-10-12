@@ -63,6 +63,9 @@ export class AppComponent {
 
   allComplete(): boolean {
     let allGood = true;
+    if(this.allTasks.length == 0) {
+      return allGood;
+    }
     this.allTasks.forEach(function(value) {
       if(!value.completed) {
         allGood = false;
