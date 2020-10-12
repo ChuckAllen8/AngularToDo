@@ -4,8 +4,8 @@
     <div>
       <div class="card">
         <input type="text" class="card-text small-input" (input)="filterTasks()" [(ngModel)]="filter" placeholder="Filter" />
-        <input *ngIf="!allComplete()" id="incomplete" type="checkbox" class="btn btn-right large-checkbox" (change)="filterTasks()" [(ngModel)]="onlyIncomplete"  />
-        <label *ngIf="!allComplete()" class="card-text text-right" for="incomplete">Incomplete</label>
+        <input id="incomplete" type="checkbox" class="btn btn-right large-checkbox" (change)="filterTasks()" [(ngModel)]="onlyIncomplete"  />
+        <label class="card-text text-right" for="incomplete">Incomplete</label>
       </div>
       <div class="card" *ngIf="allComplete()">
         <h2 class="text-center">All tasks are completed!</h2>
